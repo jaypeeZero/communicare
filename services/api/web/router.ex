@@ -23,8 +23,8 @@ defmodule Api.Router do
   scope "/api", Api do
     pipe_through(:api)
 
-    get("/todos", TodoController, :index)
+    # get("/todos", TodoController, :index)
     # the following was how the tutorial did it, but the get line is more precise
-    # resources("/todos", TodoController, only: [:index])
+    resources("/todos", TodoController, only: [:index])
   end
 end

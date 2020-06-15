@@ -1,4 +1,4 @@
-defmodule Api.TodosView do
+defmodule Api.TodoView do
   use Api.Web, :view
 
   def render("index.json", %{todos: todos}) do
