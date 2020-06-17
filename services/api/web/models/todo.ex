@@ -5,6 +5,6 @@ defmodule Api.Todo do
     field(:title)
     field(:description)
 
-    timestamps
+    timestamps()
   end
 end

@@ -24,5 +24,6 @@ defmodule Api.Router do
     pipe_through(:api)
 
     resources("/todos", TodoController, only: [:index, :show])
+    resources("/messages", MessageController, only: [:index])
   end
 end

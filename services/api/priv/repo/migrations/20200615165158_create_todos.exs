@@ -6,7 +6,7 @@ defmodule Api.Repo.Migrations.CreateTodos do
       add(:title, :string)
       add(:description, :text)
 
-      timestamps
+      timestamps()
     end
   end
 end
