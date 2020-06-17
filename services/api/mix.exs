@@ -34,6 +34,8 @@ defmodule Api.Mixfile do
     ]
   end
 
+  defp applications(:dev), do: applications(:all) ++ [:remix]
+
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
   defp elixirc_paths(_), do: ["lib", "web"]
@@ -51,7 +53,8 @@ defmodule Api.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:ex_machina, "~> 2.4", only: :test}
+      {:ex_machina, "~> 2.4", only: :test},
+      {:remix, "~> 0.0.1", only: :dev}
     ]
   end
 

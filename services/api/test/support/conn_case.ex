@@ -27,6 +27,8 @@ defmodule Api.ConnCase do
 
       import Api.Router.Helpers
 
+      import Api.ConnCaseHelper
+
       # The default endpoint for testing
       @endpoint Api.Endpoint
     end

@@ -2,9 +2,11 @@ defmodule Api.TodoView do
   use Api.Web, :view
 
   def render("index.json", %{todos: todos}) do
-    %{
-      todos: Enum.map(todos, &todo_json/1)
-    }
+    %{todos: Enum.map(todos, &todo_json/1)}
+  end
+
+  def render("show.json", %{todo: todo}) do
+    %{todo: todo_json(todo)}
   end
 
   def todo_json(todo) do

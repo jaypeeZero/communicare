@@ -1,6 +1,7 @@
 defmodule Api.TodoControllerTest do
   use Api.ConnCase
   import Api.Factory
+  alias Api.TodoView
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")
@@ -12,19 +13,14 @@ defmodule Api.TodoControllerTest do
     path = todo_path(conn, :index)
     conn = get(conn, path)
 
-    assert json_response(conn, 200) == %{
-             "todos" => [
-               %{
-                 "title" => todo.title,
-                 "description" => todo.description,
-                 "inserted_at" =>
-                   Ecto.DateTime.cast!(todo.inserted_at)
-                   |> Ecto.DateTime.to_iso8601(),
-                 "updated_at" =>
-                   Ecto.DateTime.cast!(todo.updated_at)
-                   |> Ecto.DateTime.to_iso8601()
-               }
-             ]
-           }
+    assert json_response(conn, 200) == render_json(TodoView, "index.json", todos: [todo])
+  end
+
+  test "/api/todos/:id renders a single todo", %{conn: conn} do
+    todo = insert(:todo)
+
+    conn = get(conn, todo_path(conn, :show, todo))
+
+    assert json_response(conn, 200) == render_json(TodoView, "show.json", todo: todo)
   end
 end
